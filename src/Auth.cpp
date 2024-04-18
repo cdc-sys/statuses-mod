@@ -42,16 +42,16 @@ public:
 					token = object["token"].as_string();
 				}
 			}
-			geode::log::debug("{}",error);
-			geode::log::debug("{}",text);
-			geode::log::debug("{}",token);
+			// geode::log::debug("{}",error);
+			// geode::log::debug("{}",text);
+			// geode::log::debug("{}",token);
 			if (!token.empty()){
 				loading->changeStatus(nullptr);
 				//Notification::create("[Statuses] Successfully Authorized!",CCSprite::createWithSpriteFrameName("GJ_completesIcon_001.png"),1.f)->show();
 				Mod::get()->setSavedValue<bool>("authenticated",true);
 				Mod::get()->setSavedValue<std::string>("token",token);
-				geode::log::info("{}",text);
-				geode::log::info("{}",token);
+				//geode::log::info("{}",text);
+				//geode::log::info("{}",token);
 				StatusManager::get()->authFailed = false;
 				StatusManager::get()->autoReconnect = true;
 				ServerListener::connectAsync();
@@ -170,14 +170,14 @@ class $modify(DeauthHook,GJAccountManager){
     }
 };
 // Uncomment when Releasing
-/*$on_mod(Loaded){
-    if (Mod::get()->getSavedValue<bool>("used-beta") != true){
+$on_mod(Loaded){
+    if (Mod::get()->getSavedValue<bool>("RELEASE_used-prerelease-version") != true){
         if (Mod::get()->getSavedValue<bool>("authenticated") == true){
             Mod::get()->setSavedValue<bool>("authenticated",false);
             Mod::get()->setSavedValue<bool>("konami-egg-found",false);
             Mod::get()->setSavedValue<bool>("auth-info-popup-showed",false);
             Mod::get()->setSavedValue<std::string>("token","");
-            Mod::get()->setSavedValue<bool>("used-beta",true);
+            Mod::get()->setSavedValue<bool>("RELEASE_used-prerelease-version",true);
         }
     }
-}*/
+}

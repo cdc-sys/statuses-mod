@@ -79,7 +79,7 @@ void ServerListener::connect() {
 }
 
 void ServerListener::onMessageThreaded(std::string message) {
-    geode::log::info("{}", message);
+    //geode::log::info("{}", message);
     matjson::Value object = matjson::parse(message);
     if (!object.contains("packet_type") || !object.contains("data")) {
         return;
@@ -99,7 +99,7 @@ void ServerListener::onMessageThreaded(std::string message) {
             object.set("data", dataObject.dump());
             ws->send(object.dump());
         } else {
-            geode::log::info("authorization failed");
+            geode::log::error("WS Authentication failed!");
         }
     }
     if (packet_type == "ping"){
@@ -182,6 +182,6 @@ void ServerListener::open() {
 
     ws.release();
     // ws.reset(WebSocket::from_url("ws://164.152.25.111:7438"));
-    geode::log::info("connecting...");
+    geode::log::info("Connecting to the server...");
     ws.reset(WebSocket::from_url(fmt::format("ws://ws.{}/", StatusManager::get()->domain)));
 }

@@ -48,7 +48,7 @@ class $modify(MyProfilePage, ProfilePage) {
             CCMenuItemSpriteExtra *changeStatusBtn = CCMenuItemSpriteExtra::create(this->m_fields->statusSprite, this, menu_selector(MyProfilePage::onChangeStatus));
             auto usernameLabel = static_cast<cocos2d::CCLabelBMFont *>(this->m_mainLayer->getChildByID("username-label"));
 
-            geode::log::info("{}", usernameLabel);
+            //geode::log::info("{}", usernameLabel);
             auto changeStatusMenu = CCMenu::create();
             changeStatusMenu->addChild(changeStatusBtn);
             changeStatusMenu->setPosition((usernameLabel->getPositionX() - usernameLabel->getScaledContentSize().width / 2) - (10.5f + offset), usernameLabel->getPositionY() - 2);
@@ -57,7 +57,7 @@ class $modify(MyProfilePage, ProfilePage) {
             auto statusIcon = StatusIconNode::create(info->m_accountID);
             statusIcon->setScale(.75f);
             auto usernameLabel = static_cast<cocos2d::CCLabelBMFont *>(this->m_mainLayer->getChildByID("username-label"));
-            geode::log::info("{}", usernameLabel);
+            //::log::info("{}", usernameLabel);
             auto changeStatusMenu = CCMenu::create();
             changeStatusMenu->addChild(statusIcon);
             changeStatusMenu->setPosition((usernameLabel->getPositionX() - usernameLabel->getScaledContentSize().width / 2) - (10.5f + offset), usernameLabel->getPositionY() - 2);

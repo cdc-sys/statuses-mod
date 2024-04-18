@@ -12,7 +12,7 @@ class $modify(MyCommentCell,CommentCell){
             status_mod::subscribeToStatusUpdates(p0->m_accountID);
         }
         bool smallCommentsMode = this->m_height == 36;
-        geode::log::info("{}",smallCommentsMode);
+        //geode::log::info("{}",smallCommentsMode);
         auto usernameLabel = this->m_mainLayer->getChildByID("username-label");
         auto playerIcon = getChildOfType<SimplePlayer>(this->m_mainLayer, 0);
         auto statusIcon = StatusIconNode::create(p0->m_accountID);

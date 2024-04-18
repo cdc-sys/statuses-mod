@@ -42,7 +42,7 @@ void StatusChangeLayer::setupMenu() {
     statusMenu->setZOrder(1);
     float buttonYPosOffset = 0;
     for (auto &[key, value] : status_mod::settableStatuses) {
-        geode::log::info("{}", value.name);
+        //geode::log::info("{}", value.name);
 
         auto buttonNode = CCNode::create();
         CCScale9Sprite *statusBtnBg;
@@ -109,7 +109,7 @@ void StatusChangeLayer::keyDown(cocos2d::enumKeyCodes key) {
     this->currentComb.push_back(key);
     for (int i = 0; i<this->currentComb.size();i++){
         if (this->currentComb[i] == this->correctComb[i]){
-            geode::log::info("input {} correct | {} {}",i,(int)this->currentComb[i],(int)this->correctComb[i]);
+            //geode::log::info("input {} correct | {} {}",i,(int)this->currentComb[i],(int)this->correctComb[i]);
             goodKey = true;
         }
         else{
