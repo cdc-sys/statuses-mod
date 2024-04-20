@@ -69,8 +69,9 @@ void ServerListener::connect() {
     geode::Loader::get()->queueInMainThread([]() {
         if (StatusManager::get()->autoReconnect){
             ServerListener::connectAsync();
-            status_mod::clearStatusSubscriptions();
-        } });
+        } 
+        status_mod::clearStatusSubscriptions();
+        });
     ws.release();
 
 #ifdef _WIN32
@@ -114,6 +115,7 @@ void ServerListener::onMessageThreaded(std::string message) {
             StatusManager::get()->isWSOpen = false;
             StatusManager::get()->autoReconnect = false;
             StatusManager::get()->autoRunAuth = true;
+            StatusManager::get()->reset();
             Loader::get()->queueInMainThread([](){
                 auto flalert = createQuickPopup("Uh Oh!","You've been <cr>deauthorized</c> from <cg>Statuses</c>!\nWould you like to open your <co>profile</c> to <cy>authenticate</c> again?\n<cb>(To authenticate you need to press the Status Icon on your profile)</c>","Later","OPEN",
                 [](auto,bool btn2){
