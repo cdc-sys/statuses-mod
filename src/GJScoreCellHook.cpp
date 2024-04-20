@@ -16,10 +16,10 @@ class $modify(MyScoreCell,GJScoreCell){
         
         statusIcon->setScale(0.55f);
         if (playerIcon){
-            statusIcon->setPosition({15.f,-15.f});
-            playerIcon->addChild(statusIcon);
+            statusIcon->setPosition({playerIcon->getPositionX()+15.f,playerIcon->getPositionY()-15.f});
+            //playerIcon->addChild(statusIcon);
         }
         statusIcon->setZOrder(1);
-        
+        this->m_mainLayer->addChild(statusIcon);
     }
 };

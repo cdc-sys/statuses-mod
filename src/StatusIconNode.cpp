@@ -4,14 +4,15 @@
 bool StatusIconNode::init() {
     if (!CCNode::init())
         return false;
-    statusIcon = CCSprite::createWithSpriteFrameName(status_mod::getStatusFrameNameFromType(StatusManager::get()->getStatusForUser(this->accountID).type));
     lastStatusType = StatusManager::get()->getStatusForUser(this->accountID).type;
+    statusIcon = CCSprite::createWithSpriteFrameName(status_mod::getStatusFrameNameFromType(StatusManager::get()->getStatusForUser(this->accountID).type));
     this->addChild(statusIcon);
     this->setAnchorPoint({0.5, 0.5});
     this->scheduleUpdate();
     return true;
 }
 void StatusIconNode::update(float dt) {
+    //geode::log::info("Updated for id {}",this->accountID);
     if (!statusIcon) {
         return;
     }

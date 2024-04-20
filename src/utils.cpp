@@ -46,6 +46,9 @@ const char *status_mod::getStatusTypeString(status_mod::StatusType statusType) {
     case status_mod::StatusType::CUSTOM:
         return "custom";
         break;
+    case status_mod::StatusType::BANNED:
+        return "banned";
+        break;
     default:
         return "offline";
         break;
@@ -71,6 +74,9 @@ const char *status_mod::getStatusFrameNameFromType(status_mod::StatusType status
     case status_mod::StatusType::CUSTOM:
         return "status_custom.png"_spr;
         break;
+    case status_mod::StatusType::BANNED:
+        return "GJ_deleteIcon_001.png";
+        break;
     default:
         return "status_offline.png"_spr;
         break;
@@ -89,6 +95,8 @@ status_mod::StatusType status_mod::getStatusTypeFromString(std::string statusTyp
         return status_mod::StatusType::INVISIBLE;
     } else if (statusType == "custom") {
         return status_mod::StatusType::CUSTOM;
+    } else if (statusType == "banned") {
+        return status_mod::StatusType::BANNED;
     } else {
         return status_mod::StatusType::OFFLINE;
     }

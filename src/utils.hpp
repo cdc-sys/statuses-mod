@@ -14,7 +14,8 @@ namespace status_mod {
         DO_NOT_DISTURB = 3,
         OFFLINE = 4,
         INVISIBLE = 5,
-        CUSTOM = 6
+        CUSTOM = 6,
+        BANNED = 7
     };
 
     #endif
