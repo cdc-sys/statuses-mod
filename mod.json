@@ -34,7 +34,7 @@
 	},
 	"version": "v1.0.1",
 	"id": "cdc.statuses",
-	"name": "Account Statuses",
+	"name": "Statuses",
 	"developer": "cdc",
 	"description": "Displays statuses on profiles, comments, account comments, level cells and level pages"
 }
