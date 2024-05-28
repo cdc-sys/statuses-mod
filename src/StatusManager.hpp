@@ -25,6 +25,6 @@ public:
     void reset();
 
     void removeStatusSprite(int accID, CCSprite* sprite);
-    void setCurrentStatus(status_mod::StatusType type, const char* customStatusText = nullptr, bool autoIdle = false);
+    void setCurrentStatus(status_mod::StatusType type, std::string customStatusText = "", bool autoIdle = false);
     static StatusManager* get();
 };

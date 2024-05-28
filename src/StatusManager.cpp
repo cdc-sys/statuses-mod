@@ -32,19 +32,23 @@ void StatusManager::reset(){
     this->autoReconnect = false;
     status_mod::clearStatusSubscriptions();
 }
-void StatusManager::setCurrentStatus(status_mod::StatusType type, const char *customStatusText, bool autoIdle) {
+void StatusManager::setCurrentStatus(status_mod::StatusType type, std::string customStatusText, bool autoIdle) {
     status_mod::Status newStatus;
-    if (customStatusText) {
+    if (!customStatusText.empty()) {
         newStatus.hasCustomStatus = true;
         newStatus.customStatus = customStatusText;
+    }
+    else{
+        newStatus.hasCustomStatus = false;
+        newStatus.customStatus = "";
     }
     newStatus.type = type;
     this->currentStatus = newStatus;
     matjson::Value object;
     matjson::Value dataObject;
     dataObject.set("status", status_mod::getStatusTypeString(type));
-    if (customStatusText) {
-        dataObject.set("custom_status", customStatusText);
+    if (!customStatusText.empty()) {
+        dataObject.set("customStatus", customStatusText);
     }
     dataObject.set("auto_idle", autoIdle);
     object.set("packet_type", "update_user_settings");

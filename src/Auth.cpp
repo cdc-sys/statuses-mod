@@ -169,15 +169,3 @@ class $modify(DeauthHook,GJAccountManager){
         Notification::create(" [Statuses] Logged out, after you log in please authenticate again.",CCSprite::createWithSpriteFrameName("exMark_001.png"))->show();
     }
 };
-// Uncomment when Releasing
-$on_mod(Loaded){
-    if (Mod::get()->getSavedValue<bool>("RELEASE_used-prerelease-version") != true){
-        if (Mod::get()->getSavedValue<bool>("authenticated") == true){
-            Mod::get()->setSavedValue<bool>("authenticated",false);
-            Mod::get()->setSavedValue<bool>("konami-egg-found",false);
-            Mod::get()->setSavedValue<bool>("auth-info-popup-showed",false);
-            Mod::get()->setSavedValue<std::string>("token","");
-            Mod::get()->setSavedValue<bool>("RELEASE_used-prerelease-version",true);
-        }
-    }
-}

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #ifndef _UTILS_H_
 #define _UTILS_H_
 #include <Geode/Geode.hpp>
@@ -21,13 +22,13 @@ namespace status_mod {
     #endif
 
     struct StatusInfo {
-        const char* name = "";
-        const char* desc = "";
+        std::string name = "";
+        std::string desc = "";
     };
     struct Status {
         StatusType type = OFFLINE;
         bool hasCustomStatus = false;
-        const char* customStatus = nullptr;
+        std::string customStatus = "";
     };
     static inline std::map<StatusType, StatusInfo> settableStatuses = {
         {status_mod::StatusType::ONLINE, {"Online", ""}},
