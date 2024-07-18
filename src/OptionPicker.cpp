@@ -36,11 +36,11 @@ bool OptionPicker::init(){
 }
 
 std::string OptionPicker::getPickedItem(){
-    return "";
+    return this->items[this->currentItem];
 }
 
 int OptionPicker::getPickedItemID(){
-    return 0;
+    return this->currentItem;
 }
 
 void OptionPicker::onNext(CCObject*sender){

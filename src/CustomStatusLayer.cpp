@@ -32,7 +32,7 @@ void CustomStatusLayer::update(float dt){
     } 
     if (charsLeft < 50){
         this->charactersLeft->setColor({0,0,0});
-        this->charactersLeft->setOpacity(255);
+        this->charactersLeft->setOpacity(200);
     }
     if (charsLeft < 25){
         this->charactersLeft->setColor({255,0,0});
@@ -123,9 +123,10 @@ bool CustomStatusLayer::init() {
 
     //this->m_mainLayer->setAnchorPoint({0.5, 0.5});
     this->m_mainLayer->setScale(0.f);
-    this->m_mainLayer->runAction(
-        CCEaseElasticOut::create(CCScaleTo::create(1.f,1.f))
-    );
+    //this->m_mainLayer->runAction(
+    //    CCEaseElasticOut::create(CCScaleTo::create(1.f,1.f))
+    //);
+    this->m_mainLayer->runAction(cocos2d::CCEaseElasticOut::create(cocos2d::CCScaleTo::create(0.5f, 1.0), 0.6f));
     this->addChild(m_mainLayer);
     this->setZOrder(1000);
 

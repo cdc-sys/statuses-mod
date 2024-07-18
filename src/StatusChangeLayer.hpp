@@ -12,6 +12,7 @@ class StatusChangeLayer : public CCLayer {
     void registerWithTouchDispatcher() override;
     void setupMenu();
     void keyBackClicked() override;
+    void onClearCustomStatus(CCObject* sender);
     CCLayer *m_mainLayer;
     CCMenuItemSpriteExtra *statusChangeButton;
     CCMenu* statusMenu;

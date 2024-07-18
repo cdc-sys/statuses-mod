@@ -1,4 +1,5 @@
 #include "StatusChangeLayer.hpp"
+#include "Geode/binding/CCMenuItemSpriteExtra.hpp"
 #include "StatusManager.hpp"
 #include "CustomStatusLayer.hpp"
 #include "utils.hpp"
@@ -10,7 +11,6 @@ void StatusChangeLayer::keyBackClicked() {
     this->removeFromParent();
 }
 void StatusChangeLayer::onStatus(CCObject *sender) {
-    this->setTouchEnabled(false);
     CCNode *node = static_cast<CCNode *>(sender);
     if (node->getID() == "custom") {
         auto customStatusLayer = CustomStatusLayer::create(this);
@@ -26,8 +26,15 @@ void StatusChangeLayer::onStatus(CCObject *sender) {
         statusChangeButton->getNormalImage()->setAnchorPoint({0.5f, 0.5f});
         statusChangeButton->getNormalImage()->setPosition({8.625f, 8.625f});
         statusChangeButton->setContentSize({17.25f, 17.25f});
+        this->setTouchEnabled(false);
         this->removeFromParent();
     }
+}
+void StatusChangeLayer::onClearCustomStatus(CCObject* sender){
+    auto currentStatus = StatusManager::get()->getCurrentStatus();
+    StatusManager::get()->setCurrentStatus(currentStatus.type);
+    this->m_mainLayer->removeAllChildren();
+    this->setupMenu();
 }
 void StatusChangeLayer::setupMenu() {
     auto bg = CCScale9Sprite::create("GJ_square04.png");
